@@ -1,6 +1,29 @@
+
+var testString, testee;
 var reverse = [];
+var answerPlace = document.getElementById("answer");
+
+
+
+
+document.querySelector('#enter').addEventListener('keypress', function (e) {
+    var key = e.which || e.keyCode;
+    if (key === 13) { // 13 is enter
+        testString = event.target.value;
+        testee = event.target.value;
+        var test = reversal(testString);
+        console.log(test);
+        answerPlace.innerHTML += "Reverse:" + test + "</br>";
+        var testString2 = alphabits(testString);
+        console.log(testString2);
+        answerPlace.innerHTML += "Alphabetical:" + testString2 + "</br>";
+        palindrome(testee);
+        
+    }
+});
+
 function reversal(testString) {
-    for (var i = 0; i <= testString.length-1; i++){
+    for (var i = 0; i <= (testString.length-1); i++){
         //console.log(testString[testString.length - i]);
         reverse.push(testString[(testString.length -1) - i]);
         console.log(reverse);
@@ -28,7 +51,7 @@ function palindrome(testString) {
     console.log(testString);
     console.log("The length of the word:",testString.length);
     if ((testString.length % 2) ===  1 ){
-        console.log("Able to be a palindrome.");
+        
         let index = Math.floor(testString.length / 2);
         console.log("The index should be about half...", index);
         for (var t = 0; t < index; t++){
@@ -36,19 +59,15 @@ function palindrome(testString) {
                 console.log(`This is the letter at position ${index+t}:`, testString[index+t]);
                 console.log(`This is the letter at position ${index-t}:`,testString[index-t]);
                 console.log(`${testString[index+t]} ${testString[index-t]}`);
-                // if(testString[index-t].charcode !== testString[index+t].charcode )
-                //     console.log("Not a palindrome.");
-
+                console.log("This is a palindrome.");
+                answerPlace.innerHTML += "This is a palindrome." + "</br>";
             }
 
         }
     }
-    console.log("Not");
+    else{
+        answerPlace.innerHTML += "This is not a palindrome." + "</br>";
+    }
 }
 
-var testString = "detartrated", testee = "detartrated";
-var test = reversal(testString);
-console.log(test);
-var testString2 = alphabits(testString);
-console.log(testString2);
-palindrome(testee);
+
